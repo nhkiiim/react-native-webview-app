@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { WebView } from "react-native-webview";
-import { View, TouchableOpacity, Text, Alert } from "react-native";
+import { View, TouchableOpacity, Text, Alert, StyleSheet } from "react-native";
 
 const WebViewScreen = ({ }) => {
   //웹뷰에서 데이터 받기
@@ -17,13 +17,13 @@ const WebViewScreen = ({ }) => {
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View style={styles.container}>
         <WebView
             ref={webViewRef}
             source={{uri: 'http://localhost:8480/webview'}}
             onMessage={onMessage}
         />
-        <View style={{flex: 1}}>
+        <View style={styles.container}>
             <TouchableOpacity onPress={sendMessage}>
                 <Text>RN에서 데이터 전송</Text>
             </TouchableOpacity>
@@ -31,5 +31,10 @@ const WebViewScreen = ({ }) => {
     </View>
   );
 };
-
 export default WebViewScreen;
+
+const styles = StyleSheet.create({
+    container: {
+        flex : 1,
+    }
+})
